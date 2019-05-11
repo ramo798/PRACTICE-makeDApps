@@ -17,3 +17,24 @@ Deploying 'Test'
    > Saving artifacts
    -------------------------------------
    > Total cost:           0.0077754 ETH
+
+
+   Deploying 'Ownbuki'
+   -------------------
+   > transaction hash:    0x7b5bd0784acbdfb25b8fd4052ccb59826bbe75781b04dfc23a10d0f426c887c6
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x76d954855cCce4B61D95EC9549Feffc2AaE7e928
+   > block number:        23
+   > block timestamp:     1557587121
+   > account:             0x27451B6B9a7CEF76A8538a525fcB7e19Cf1a4348
+   > balance:             99.97403544
+   > gas used:            533947
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01067894 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.01067894 ETH
