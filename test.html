@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+<script type="text/javascript">	
+
+	const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+		
+	//コントラクトを呼び出すアカウントのアドレス
+	let coinbase = web3.eth.accounts[1];
+	
+	//コントラクトのアドレス
+	const address = "0x535757756A8F09409b15d45887fA81DF2A8d8A16";
+    //ABI情報
+
+    const abi = [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_name",
+          "type": "string"
+        }
+      ],
+      "name": "set",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "get",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+    ]
+	
+	
+	//コントラクトのインスタンスを生成
+    const contract = web3.eth.contract(abi).at(address);
+    
+    let name = contract.get.call();
+    console.log("name:",name);
+	
+	//トランザクションの実行（コントラクトのset関数を実行）
+	let response1 = contract.set.sendTransaction("hanako",{from:coinbase,gas:3000000});
+	console.log("response:",response1); //responseにはトランザクションのハッシュ値が返ってくる
+	
+	//コントラクトのget関数を実行
+	let name1 = contract.get.call();
+    console.log("name:",name1); //hanako
+    
+    	//トランザクションの実行（コントラクトのset関数を実行）
+	let response2 = contract.set.sendTransaction("kazuki",{from:coinbase,gas:3000000});
+	console.log("response:",response2); //responseにはトランザクションのハッシュ値が返ってくる
+	
+	//コントラクトのget関数を実行
+	let name2 = contract.get.call();
+    console.log("name:",name2); //kazuki
+    
+        	//トランザクションの実行（コントラクトのset関数を実行）
+	let response3 = contract.set.sendTransaction("hahaha",{from:coinbase,gas:3000000});
+	console.log("response:",response3); //responseにはトランザクションのハッシュ値が返ってくる
+    
+</script>
+</head>
+<body>
+ 
+</body>
+</html>
