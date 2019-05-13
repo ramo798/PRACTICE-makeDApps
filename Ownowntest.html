@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+<script type="text/javascript">	
+
+	const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+		
+	//コントラクトを呼び出すアカウントのアドレス
+	let coinbase = web3.eth.accounts[8];
+	
+	//コントラクトのアドレス
+	const address = "0x123e4dfa6aB57db947BFBE20804F644E6aA53154";
+    //ABI情報
+
+    const abi = [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "objects",
+      "outputs": [
+        {
+          "name": "objectname",
+          "type": "string"
+        },
+        {
+          "name": "owenername",
+          "type": "string"
+        },
+        {
+          "name": "owneradress",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_index",
+          "type": "uint256"
+        },
+        {
+          "name": "_objectname",
+          "type": "string"
+        },
+        {
+          "name": "_ownername",
+          "type": "string"
+        }
+      ],
+      "name": "setOnject",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getObject",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+	
+	
+	//コントラクトのインスタンスを生成
+  const contract = web3.eth.contract(abi).at(address);
+
+  let add1 = contract.setOnject(0,"須佐男","Sasuke",{from:coinbase,gas:3000000});
+  // let add2 = contract.setObject(1,"螺旋丸","Naruto",{from:coinbase,gas:3000000});
+  // let add3 = contract.setObject(2,"きゅうり","Kappa",{from:coinbase,gas:3000000});
+  // let add4 = contract.setObject(3,"MINTIA","ジャスコ",{from:coinbase,gas:3000000});
+  // let add5 = contract.setObject(4,"MACBOOK","APPLE",{from:coinbase,gas:3000000});
+    
+	console.log(add1);
+  
+	// let name1 = contract.getLanddata.call(0);
+  // console.log("owner:",name1[0]);
+  // console.log("landname:",name1[1]);
+  // console.log("power:",name1[2].c[0]);
+
+  // let name2 = contract.getLanddata.call(1);
+  // console.log("owner:",name2[0]);
+  // console.log("landname:",name2[1]);
+  // console.log("power:",name2[2].c[0]);
+
+  // let battle1 = contract.Battleland.sendTransaction(0,"ミナモタウン",200,{from:coinbase,gas:3000000});
+  // console.log(battle1);
+
+  // let name11 = contract.getLanddata.call(0);
+  // console.log("owner:",name11[0]);
+  // console.log("landname:",name11[1]);
+  // console.log("power:",name11[2].c[0]);
+
+  // let battle2 = contract.Battleland.sendTransaction(0,"モコウタウン",2200,{from:coinbase,gas:3000000});
+  // console.log(battle2);
+
+  // let name12 = contract.getLanddata.call(0);
+  // console.log("owner:",name12[0]);
+  // console.log("landname:",name12[1]);
+  // console.log("power:",name12[2].c[0]);
+
+  // // let name3 = contract.getLanddata.call(2);
+  // // console.log("owner:",name3[0]);
+  // // console.log("landname:",name3[1]);
+  // // console.log("power:",name3[2].c[0]);
+
+  // // let name4 = contract.getLanddata.call(3);
+  // // console.log("owner:",name4[0]);
+  // // console.log("landname:",name4[1]);
+  // // console.log("power:",name4[2].c[0]);
+
+  // // let name5 = contract.getLanddata.call(4);
+  // // console.log("owner:",name5[0]);
+  // // console.log("landname:",name5[1]);
+  // // console.log("power:",name5[2].c[0]);
+    
+</script>
+</head>
+<body>
+ 
+</body>
+</html>

@@ -8,7 +8,7 @@
 	const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
 		
 	//コントラクトを呼び出すアカウントのアドレス
-	let coinbase = web3.eth.accounts[5];
+	let coinbase = web3.eth.accounts[6];
 	
 	//コントラクトのアドレス
 	const address = "0xe6FabBEb51a4762f7aC6B90f4e05EC6307C9E3F3";
@@ -155,20 +155,36 @@
   console.log("landname:",name2[1]);
   console.log("power:",name2[2].c[0]);
 
-  let name3 = contract.getLanddata.call(2);
-  console.log("owner:",name3[0]);
-  console.log("landname:",name3[1]);
-  console.log("power:",name3[2].c[0]);
+  let battle1 = contract.Battleland.sendTransaction(0,"ミナモタウン",200,{from:coinbase,gas:3000000});
+  console.log(battle1);
 
-  let name4 = contract.getLanddata.call(3);
-  console.log("owner:",name4[0]);
-  console.log("landname:",name4[1]);
-  console.log("power:",name4[2].c[0]);
+  let name11 = contract.getLanddata.call(0);
+  console.log("owner:",name11[0]);
+  console.log("landname:",name11[1]);
+  console.log("power:",name11[2].c[0]);
 
-  let name5 = contract.getLanddata.call(4);
-  console.log("owner:",name5[0]);
-  console.log("landname:",name5[1]);
-  console.log("power:",name5[2].c[0]);
+  let battle2 = contract.Battleland.sendTransaction(0,"モコウタウン",2200,{from:coinbase,gas:3000000});
+  console.log(battle2);
+
+  let name12 = contract.getLanddata.call(0);
+  console.log("owner:",name12[0]);
+  console.log("landname:",name12[1]);
+  console.log("power:",name12[2].c[0]);
+
+  // let name3 = contract.getLanddata.call(2);
+  // console.log("owner:",name3[0]);
+  // console.log("landname:",name3[1]);
+  // console.log("power:",name3[2].c[0]);
+
+  // let name4 = contract.getLanddata.call(3);
+  // console.log("owner:",name4[0]);
+  // console.log("landname:",name4[1]);
+  // console.log("power:",name4[2].c[0]);
+
+  // let name5 = contract.getLanddata.call(4);
+  // console.log("owner:",name5[0]);
+  // console.log("landname:",name5[1]);
+  // console.log("power:",name5[2].c[0]);
     
 </script>
 </head>
