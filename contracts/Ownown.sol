@@ -7,7 +7,7 @@ contract Ownown{
     }
     Objectdata[8] public objects;
 
-    function setOnject(uint _index, string memory _objectname,string memory _ownername) public{
+    function setObject(uint _index, string memory _objectname,string memory _ownername) public{
         objects[_index].objectname = _objectname;
         objects[_index].owenername = _ownername;
         objects[_index].owneradress = msg.sender;
