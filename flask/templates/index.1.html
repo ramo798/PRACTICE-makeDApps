@@ -1,0 +1,60 @@
+<!-- templates/index.html -->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <div id="warning"></div>
+
+    <button id="sendButton">送る</button>
+
+    <div id="account"></div>
+    <div id="response"></div>
+
+    <script>
+
+        window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                startApp();
+            } else {
+                document.getElementById('warning').innerHTML = 'メタマスクをインストールして下さい'
+            }
+        })
+
+        function startApp() {
+            //ログインチェック
+            web3.eth.getAccounts(function (error, accounts) {
+                if (error) return;
+                const user_account = accounts[0];
+                if (typeof user_account !== 'undefined') {
+                    sendEther();
+                } else {
+                    document.getElementById('warning').innerHTML = 'メタマスクにログインして下さい'
+                }
+            });
+        }
+
+        function sendEther() {
+            const sendButton = document.getElementById('sendButton');
+            sendButton.addEventListener('click', function () {
+                web3.eth.sendTransaction({
+                    from: web3.eth.accounts[0],
+                    to: '0xee8d0f5b3ce42210ad154f4a45628db768b55012',
+                    value: web3.toWei(document.getElementById("amount").value, 'ether')
+                }, function (error, txHash) {
+                    if (!error) {
+                        document.getElementById('response').innerHTML = '送信完了: <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank">Etherscan（ROPSTEN）でトランザクションを確認</a>'
+                    } else {
+                        document.getElementById('response').innerHTML = error;
+                    }
+                })
+            });
+        }
+
+    </script>
+</body>
+
+</html>
