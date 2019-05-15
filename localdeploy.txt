@@ -1,0 +1,21 @@
+Replacing 'Ownown'
+   ------------------
+   > transaction hash:    0x2d9d929479ca92f7682ad89c13f8e7d940385949488f8e14eaa381c19f61ec2c
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x535757756A8F09409b15d45887fA81DF2A8d8A16
+   > block number:        3
+   > block timestamp:     1557887164
+   > account:             0x27451B6B9a7CEF76A8538a525fcB7e19Cf1a4348
+   > balance:             99.9721107
+   > gas used:            1067523
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.02135046 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.02135046 ETH
+
+http://133.42.155.174

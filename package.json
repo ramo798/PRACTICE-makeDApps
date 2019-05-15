@@ -1,0 +1,23 @@
+{
+  "name": "mygamedapps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "web3": "^1.0.0-beta.55"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramo798/mygameDapps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramo798/mygameDapps/issues"
+  },
+  "homepage": "https://github.com/ramo798/mygameDapps#readme"
+}

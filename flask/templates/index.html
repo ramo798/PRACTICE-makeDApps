@@ -1,50 +1,23 @@
 <!-- templates/index.html -->
 <html>
+<title>registerAccount</title>
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script></script>
+<script language="javascript" type="text/javascript" src="/static/js/main.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/abi.js"></script>
 </head>
 <body>
-    <div id="warning"></div>
-    <button id="sendButton">送る</button>
-    <div id="account"></div>
-    <div id="response"></div>
-
-    <script>
-        window.addEventListener('load', function () {
-            if (typeof web3 !== 'undefined') {
-                startApp();
-            } else {
-                document.getElementById('warning').innerHTML = 'メタマスクをインストールして下さい'
-            }
-        })
-        function startApp() {
-            //ログインチェック
-            web3.eth.getAccounts(function (error, accounts) {
-                if (error) return;
-                const user_account = accounts[0];
-                if (typeof user_account !== 'undefined') {
-                    entry();
-                } else {
-                    document.getElementById('warning').innerHTML = 'メタマスクにログインして下さい'
-                }
-            });
-        }
-
-        function entry() {
-            const web3js = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/c455e9d9f2bc42f99046ae06d51ec245"));
-            const address = "0x663366f74c4c93CC233f38F51cBFDf406C2A3fB0";
-            const abi = [{"constant": true,"inputs": [{"name": "","type": "uint256"}],"name": "objects","outputs": [{"name": "objectname","type": "string"},{"name": "owenername","type": "string"},{"name": "owneraddress","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [{"name": "_index","type": "uint256"},{"name": "_objectname","type": "string"},{"name": "_ownername","type": "string"}],"name": "setObject","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [{"name": "_index","type": "uint256"}],"name": "getObject","outputs": [{"name": "","type": "string"},{"name": "","type": "string"},{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"}]
-            const contract = web3js.eth.contract(abi).at(address);
-
-            const sendButton = document.getElementById('sendButton');
-            sendButton.addEventListener('click', function (){
-                let name1 = contract.getObject.call(0);
-                console.log("name:",name1[0]);
-                console.log(web3.eth.accounts[0])
-                let add1 = contract.setObject(0,"傘","tanaka",{from:web3.eth.accounts[0],gas:3000000});
-                console.log(add1);
-            })
-        }
-    </script>
+    objectname<br>
+    <input name="objectname" id="objectname" type="text" value="" /><br>
+    owenername<br>
+    <input name="owenername" id="owenername" type="text" value="" /><br>
+    index<br>
+    <input name="index" id="index" type="text" value="" /><br>
+    <p><button onclick="registerInfo()">登録</button></p><br>
+    アカウント番号：<br>
+    <input name="readindex" id="readindex" type="number" value="" /><br>
+    <p><button onclick="showInfo()">アカウント情報表示</button></p><br>
+    <ul id="AccountInfo"></ul>
 </body>
 </html>
